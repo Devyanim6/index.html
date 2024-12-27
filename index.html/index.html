@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Market</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .navbar {
+      background-color: #333;
+      padding: 1rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      background-color: #f4f4f4;
+      padding: 6rem 2rem;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #db8d17;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .car-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .car-card {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      width: 300px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .car-card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .car-details {
+      display: none;
+      text-align: center;
+    }
+
+    .car-details img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 2rem;
+    }
+
+    #about, #contact {
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">AutoMarket</div>
+    <ul class="nav-links">
+     <li><a href="#" onclick="showSection('home')">Home</a></li><br>
+     <li><a href="#" onclick="showSection('cars')">Cars</a></li><br>
+     <li><a href="#" onclick="showSection('about')">About</a></li><br>
+     <li><a href="#" onclick="showSection('contact')">Contact</a></li><br> 
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Your Dream Car Awaits</h2>
+      <p>Find the perfect car for every journey.</p>
+      <a href="#" class="btn" onclick="showSection('cars')">Browse Cars</a>
+    </div>
+  </section>
+
+  <div class="logo">
+    <i class="fas fa-car"></i>
+    <span>Auto Market</span>
+  </div>
+
+  <!-- Cars Listing Section -->
+<section id="cars" style="display: none;">
+  <h2 class="section-title">Available Cars</h2>
+  <div class="car-list">
+    <!-- Sporty Sedan -->
+    <div class="car-card" onclick="showCarDetails('sporty-sedan')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Honda_Civic_e-HEV_Sport_%28XI%29_%E2%80%93_f_30062024.jpg" alt="Sporty Sedan">
+      <h3>Sporty Sedan</h3>
+      <p>Price: ₹25,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Engine: 2.0L Turbocharged</li>
+        <li>Fuel Economy: 28 MPG</li>
+        <li>Seating Capacity: 5</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Sporty Sedan'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+
+    <!-- Luxury SUV -->
+    <div class="car-card" onclick="showCarDetails('luxury-suv')">
+      <img src="https://carstreetindia.com/blogs/wp-content/uploads/2023/07/range-rover-1170x780.jpg" alt="Luxury SUV">
+      <h3>Luxury SUV</h3>
+      <p>Price: ₹50,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Engine: 3.5L V6</li>
+        <li>Fuel Economy: 22 MPG</li>
+        <li>Seating Capacity: 7</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Luxury SUV'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+
+    <!-- Convertible Coupe -->
+    <div class="car-card" onclick="showCarDetails('convertible-coupe')">
+      <img src="https://imgd-ct.aeplcdn.com/393x221/n/cw/ec/182371/cle-cabriolet-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80" alt="Convertible Coupe">
+      <h3>Convertible Coupe</h3>
+      <p>Price: ₹35,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Engine: 2.5L Turbocharged</li>
+        <li>Fuel Economy: 26 MPG</li>
+        <li>Seating Capacity: 4</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Convertible Coupe'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+
+    <!-- Compact Hatchback -->
+    <div class="car-card" onclick="showCarDetails('compact-hatchback')">
+      <img src="https://cars.ng/images/cars-ng/product_hyundai_veloster_2016_295358_1.png" alt="Compact Hatchback">
+      <h3>Compact Hatchback</h3>
+      <p>Price: ₹20,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Engine: 1.5L I4</li>
+        <li>Fuel Economy: 30 MPG</li>
+        <li>Seating Capacity: 5</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Compact Hatchback'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+
+    <!-- Electric Sedan -->
+    <div class="car-card" onclick="showCarDetails('electric-sedan')">
+      <img src="https://bsmedia.business-standard.com/_media/bs/img/article/2024-02/16/full/1708077127-6867.png?im=FeatureCrop,size=(826,465)">
+      <h3>Electric Sedan</h3>
+      <p>Price: ₹55,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Range: 350 miles</li>
+        <li>Fuel Economy: 120 MPGe</li>
+        <li>Seating Capacity: 5</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Electric Sedan'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+
+    <!-- Off-Road Pickup -->
+    <div class="car-card" onclick="showCarDetails('offroad-pickup')">
+      <img src="https://hips.hearstapps.com/hmg-prod/images/cdb120120comparoramford-014-1609176546.jpg?crop=0.802xw:0.657xh;0.0797xw,0.106xh&resize=1200:*" alt="Off-Road Pickup">
+      <h3>Off-Road Pickup</h3>
+      <p>Price: ₹40,000</p>
+      <ul style="text-align: left; font-size: 0.9rem;">
+        <li>Engine: 3.5L EcoBoost</li>
+        <li>Fuel Economy: 20 MPG</li>
+        <li>Seating Capacity: 5</li>
+      </ul>
+      <button class="btn" onclick="addToWishlist('Off-Road Pickup'); event.stopPropagation();">Add to Wishlist</button>
+    </div>
+  </div>
+</section>
+
+  
+
+  <!-- Car Details Section -->
+  <section id="car-details" class="car-details">
+    <h2 class="section-title" id="carTitle"></h2>
+    <img id="carImage" src="" alt="Car Image">
+    <p id="carPrice"></p>
+    <p id="carDescription"></p>
+    <a href="#" class="btn" onclick="showSection('cars')">Back to Listings</a>
+    <a href="#" class="btn" onclick="BuyNow()">Buy Now</a>
+  </section>
+
+  
+  <!-- About Section -->
+<section id="about" style="display: none;">
+  <h2 class="section-title">About Us</h2>
+  <div class="content">
+    <p>Welcome to AutoMarket, your ultimate destination for high-quality vehicles and exceptional customer service. We specialize in connecting you with the car of your dreams, offering a curated selection of top-notch vehicles to suit every need and budget.</p>
+    <p>Our team is dedicated to making your car-buying experience smooth, transparent, and enjoyable. Whether you're looking for a sleek sedan, a rugged SUV, or a luxury sports car, we’ve got you covered.</p>
+    <div class="about-images">
+      <img src="https://c7.alamy.com/comp/B8TA1N/lexus-car-showroom-B8TA1N.jpg" alt="Our Showroom" style="width: 100%; margin: 1rem 0; border-radius: 10px;">
+      <p>Discover our state-of-the-art showroom where you can experience our cars firsthand and get personalized assistance from our experts.</p>
+      
+      <img src="https://hospitalityinsights.ehl.edu/hubfs/Blog-EHL-Insights/Resources/Benefits-Excellent-Customer-Service.webp" alt="Customer Service" style="width: 100%; margin: 1rem 0; border-radius: 10px;">
+      <p>Our award-winning customer service team is here to guide you every step of the way, ensuring a seamless car-buying journey.</p>
+      
+      <img src="https://www.nocturesolutions.com/Content/img/our-team.jpg" alt="Our Team" style="width: 100%; margin: 1rem 0; border-radius: 10px;">
+      <p>Meet our team of automotive enthusiasts who are passionate about finding the perfect vehicle for you.</p>
+    </div>
+    <p>At AutoMarket, we believe that every journey begins with the right car. Let us help you start yours today!</p>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" style="display: none;">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="content">
+      <p>Email: contact@automarket.com</p>
+      <p>Phone: (123) 456-7890</p>
+      <p>Address: 123 AutoMarket St., Car City, USA</p>
+      <h3>Send us a message</h3>
+  <form action="/submitContact" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+    
+    <button type="submit" class="btn">Submit</button>
+  </form>
+  <h3>Connect with us on social media</h3>
+<div class="social-media">
+  <a href="https://facebook.com" target="_blank">Facebook</a> |
+  <a href="https://twitter.com" target="_blank">Twitter</a> |
+  <a href="https://instagram.com" target="_blank">Instagram</a>
+</div>
+<h3>Our Location</h3>
+<div>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.492392769802!2d-122.41941508468182!3d37.77492927975971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085817c88f3f807%3A0x888c0ef823a7c13f!2s123%20AutoMarket%20St.%2C%20San%20Francisco%2C%20CA%2094110%2C%20USA!5e0!3m2!1sen!2sin!4v1674241637647!5m2!1sen!2sin" 
+    width="600" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
+<h3>Business Hours</h3>
+<p>Monday to Friday: 9:00 AM - 6:00 PM</p>
+<p>Saturday: 10:00 AM - 4:00 PM</p>
+<p>Sunday: Closed</p>
+
+    </div> 
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 AutoMarket. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const carData = {
+      "sporty-sedan": {
+        title: "Sporty Sedan",
+        image: "https://static1.hotcarsimages.com/wordpress/wp-content/uploads/2022/07/2022_Lexus_IS_350_001-Cropped.jpg",
+        price: "₹25,000",
+        description: "This sporty sedan offers excellent performance and style, perfect for city and highway driving."
+      },
+      "luxury-suv": {
+        title: "Luxury SUV",
+        image: "https://cfx-wp-images.imgix.net/2024/01/2022-Genesis-GV70-driving-edited.jpg",
+        price: "₹50,000",
+        description: "A luxury SUV with spacious interiors, advanced tech, and powerful performance."
+      },
+      "convertible-coupe": {
+        title: "Convertible Coupe",
+        image: "https://www.topgear.com/sites/default/files/2022/12/3_4.jpeg",
+        price: "₹35,000",
+        description: "Enjoy the thrill of open-air driving with this stylish convertible coupe."
+      }
+    };
+
+    function showSection(sectionId) {
+      const sections = ['home', 'cars', 'car-details', 'about', 'contact'];
+      sections.forEach(id => document.getElementById(id).style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function showCarDetails(carKey) {
+      const car = carData[carKey];
+      document.getElementById("carTitle").innerText = car.title;
+      document.getElementById("carImage").src = car.image;
+      document.getElementById("carPrice").innerText = car.price;
+      document.getElementById("carDescription").innerText = car.description;
+      showSection('car-details');
+    }
+  </script>
+
+</body>
+</html> 
